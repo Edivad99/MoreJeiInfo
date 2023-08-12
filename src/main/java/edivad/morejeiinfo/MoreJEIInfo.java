@@ -2,6 +2,7 @@ package edivad.morejeiinfo;
 
 import org.slf4j.Logger;
 import com.mojang.logging.LogUtils;
+import edivad.morejeiinfo.data.MoreJeiInfoLanguageProvider;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.data.event.GatherDataEvent;

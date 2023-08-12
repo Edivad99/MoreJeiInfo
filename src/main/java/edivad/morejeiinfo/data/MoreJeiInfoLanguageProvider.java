@@ -1,5 +1,7 @@
-package edivad.morejeiinfo;
+package edivad.morejeiinfo.data;
 
+import edivad.morejeiinfo.MoreJEIInfo;
+import edivad.morejeiinfo.Translations;
 import net.minecraft.data.PackOutput;
 import net.minecraftforge.common.data.LanguageProvider;
 
