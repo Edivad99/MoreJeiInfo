@@ -1,8 +1,8 @@
 {
   "pack": {
     "description": {
-      "text": "${mod_id} resources"
+      "text": "MoreJeiInfo resource pack"
     },
-    "pack_format": ${pack_format_number}
+    "pack_format": 15
   }
 }
