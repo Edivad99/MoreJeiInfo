@@ -10,9 +10,7 @@ public class Config {
 
   public static final ForgeConfigSpec CLIENT_SPEC;
   public static final Config.Client CLIENT;
-  private static final String CATEGORY_HANDLERS = "Handler Settings";
   private static final String CATEGORY_TOOLTIPS = "Tooltip Settings";
-  private static final String CATEGORY_MISCELLANEOUS = "Miscellaneous Settings";
   private static final Mode defaultBurnTimeTooltipMode = Mode.ON_DEBUG;
   private static final Mode defaultDurabilityTooltipMode = Mode.ON_DEBUG;
   private static final Mode defaultEnchantabilityTooltipMode = Mode.ON_DEBUG;
@@ -57,21 +55,9 @@ public class Config {
     public final ForgeConfigSpec.EnumValue<Mode> translationKeyTooltipMode;
 
     Client(ForgeConfigSpec.Builder builder) {
-      builder.comment(CATEGORY_HANDLERS)
-          .comment("Handler Options")
-          .push("handler_options");
-
-      builder.pop();
-
-      builder.comment(CATEGORY_MISCELLANEOUS)
-          .comment("Miscellaneous Options")
-          .push("misc_options");
-
-      builder.pop();
-
       builder.comment(CATEGORY_TOOLTIPS)
           .comment("Tooltip Options")
-          .push("tooltip_options");
+          .push("tooltipOptions");
 
       burnTimeTooltipMode = builder
           .comment("Configure tooltip for burn time.")
