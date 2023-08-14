@@ -10,16 +10,6 @@ public class Config {
 
   public static final ForgeConfigSpec CLIENT_SPEC;
   public static final Config.Client CLIENT;
-  private static final String CATEGORY_TOOLTIPS = "Tooltip Settings";
-  private static final Mode defaultBurnTimeTooltipMode = Mode.ON_DEBUG;
-  private static final Mode defaultDurabilityTooltipMode = Mode.ON_DEBUG;
-  private static final Mode defaultEnchantabilityTooltipMode = Mode.ON_DEBUG;
-  private static final Mode defaultFoodTooltipMode = Mode.ON_DEBUG;
-  private static final Mode defaultMaxStackSizeTooltipMode = Mode.ON_DEBUG;
-  private static final Mode defaultNbtTooltipMode = Mode.ON_DEBUG;
-  private static final Mode defaultRegistryNameTooltipMode = Mode.DISABLED;
-  private static final Mode defaultTagsTooltipMode = Mode.ON_DEBUG;
-  private static final Mode defaultTranslationKeyTooltipMode = Mode.ON_DEBUG;
 
   static {
     final var specPair = new ForgeConfigSpec.Builder().configure(Config.Client::new);
@@ -55,54 +45,54 @@ public class Config {
     public final ForgeConfigSpec.EnumValue<Mode> translationKeyTooltipMode;
 
     Client(ForgeConfigSpec.Builder builder) {
-      builder.comment(CATEGORY_TOOLTIPS)
+      builder.comment("Tooltip Settings")
           .comment("Tooltip Options")
           .push("tooltipOptions");
 
       burnTimeTooltipMode = builder
           .comment("Configure tooltip for burn time.")
           .translation(Translations.BURN_TIME_MODE)
-          .defineEnum("burnTimeTooltipMode", defaultBurnTimeTooltipMode);
+          .defineEnum("burnTimeTooltipMode", Mode.ON_DEBUG);
 
       durabilityTooltipMode = builder
           .comment("Configure tooltip for durability.")
           .translation(Translations.DURABILITY_MODE)
-          .defineEnum("durabilityTooltipMode", defaultDurabilityTooltipMode);
+          .defineEnum("durabilityTooltipMode", Mode.ON_DEBUG);
 
       enchantabilityTooltipMode = builder
           .comment("Configure tooltip for enchantability")
           .translation(Translations.ENCHANTABILITY_MODE)
-          .defineEnum("enchantabilityTooltipMode", defaultEnchantabilityTooltipMode);
+          .defineEnum("enchantabilityTooltipMode", Mode.ON_DEBUG);
 
       foodTooltipMode = builder
           .comment("Configure tooltip for hunger and saturation.")
           .translation(Translations.FOOD_MODE)
-          .defineEnum("foodTooltipMode", defaultFoodTooltipMode);
+          .defineEnum("foodTooltipMode", Mode.ON_DEBUG);
 
       maxStackSizeTooltipMode = builder
           .comment("Configure tooltip for max stack size.")
-          .translation(Translations.STACKSIZE_MODE)
-          .defineEnum("maxStackSizeTooltipMode", defaultMaxStackSizeTooltipMode);
+          .translation(Translations.STACK_SIZE_MODE)
+          .defineEnum("maxStackSizeTooltipMode", Mode.ON_DEBUG);
 
       nbtTooltipMode = builder
           .comment("Configure tooltip for NBT data.")
           .translation(Translations.NBT_DATA_MODE)
-          .defineEnum("nbtTooltipMode", defaultNbtTooltipMode);
+          .defineEnum("nbtTooltipMode", Mode.ON_DEBUG);
 
       registryNameTooltipMode = builder
           .comment("Configure tooltip for registry name. E.g. minecraft:stone")
           .translation(Translations.REGISTRY_NAME_MODE)
-          .defineEnum("registryNameTooltipMode", defaultRegistryNameTooltipMode);
+          .defineEnum("registryNameTooltipMode", Mode.DISABLED);
 
       tagsTooltipMode = builder
           .comment("Configure tooltip for tags. E.g. forge:ingot, minecraft:planks")
           .translation(Translations.TAGS_MODE)
-          .defineEnum("tagsTooltipMode", defaultTagsTooltipMode);
+          .defineEnum("tagsTooltipMode", Mode.ON_DEBUG);
 
       translationKeyTooltipMode = builder
           .comment("Configure tooltip for translation key. E.g. block.minecraft.stone")
           .translation(Translations.TRANSLATION_KEY_MODE)
-          .defineEnum("translationKeyTooltipMode", defaultTranslationKeyTooltipMode);
+          .defineEnum("translationKeyTooltipMode", Mode.ON_DEBUG);
 
       builder.pop();
     }

@@ -17,7 +17,7 @@ public class MoreJeiInfoLanguageProvider extends LanguageProvider {
     this.add(Translations.DURABILITY, "Durability: %s/%s");
     this.add(Translations.ENCHANTABILITY, "Enchantability: %s");
     this.add(Translations.FOOD, "Hunger: %s Saturation: %s");
-    this.add(Translations.STACKSIZE, "Max stack size: %s");
+    this.add(Translations.STACK_SIZE, "Max stack size: %s");
     this.add(Translations.NBT_DATA, "NBT: %s");
     this.add(Translations.REGISTRY_NAME, "Registry name: %s");
     this.add(Translations.TAGS, "Tags:");
@@ -28,7 +28,7 @@ public class MoreJeiInfoLanguageProvider extends LanguageProvider {
     this.add(Translations.FOOD_MODE, "Hunger/Saturation Tooltip");
     this.add(Translations.NBT_DATA_MODE, "NBT Tooltip");
     this.add(Translations.REGISTRY_NAME_MODE, "Registry name Tooltip");
-    this.add(Translations.STACKSIZE_MODE, "Max stack size Tooltip");
+    this.add(Translations.STACK_SIZE_MODE, "Max stack size Tooltip");
     this.add(Translations.TAGS_MODE, "Tags Tooltip");
     this.add(Translations.TRANSLATION_KEY_MODE, "Translation key Tooltip");
   }

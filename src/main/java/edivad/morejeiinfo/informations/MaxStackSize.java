@@ -13,7 +13,7 @@ public class MaxStackSize implements Information {
   public List<Component> addInformation(ItemStack itemStack, Player player) {
     int stackSize = itemStack.getMaxStackSize();
     if (stackSize > 0) {
-      return List.of(Component.translatable(Translations.STACKSIZE, stackSize));
+      return List.of(Component.translatable(Translations.STACK_SIZE, stackSize));
     }
     return List.of();
   }
