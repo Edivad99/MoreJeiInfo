@@ -21,8 +21,6 @@ subprojects {
     apply plugin: 'java'
 
     java.toolchain.languageVersion = JavaLanguageVersion.of(17)
-    java.withSourcesJar()
-    java.withJavadocJar()
 
     jar {
         from(rootProject.file("LICENSE")) {
@@ -31,19 +29,13 @@ subprojects {
         manifest {
             attributes([
                     'Specification-Title'     : mod_name,
-                    'Specification-Vendor'    : mod_author,
-                    'Specification-Version'   : project.jar.archiveVersion,
+                    'Specification-Vendor'    : 'Edivad99',
+                    'Specification-Version'   : '1',
                     'Implementation-Title'    : project.name,
-                    'Implementation-Version'  : project.jar.archiveVersion,
-                    'Implementation-Vendor'   : mod_author,
+                    'Implementation-Version'  : project.version,
+                    'Implementation-Vendor'   : 'Edivad99',
                     'Implementation-Timestamp': new Date().format("yyyy-MM-dd'T'HH:mm:ssZ"),
             ])
-        }
-    }
-
-    sourcesJar {
-        from(rootProject.file("LICENSE")) {
-            rename { "${it}_${mod_name}" }
         }
     }
 
