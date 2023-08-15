@@ -53,7 +53,7 @@ public class TooltipEventHandler {
     }
 
     for (var information : INFORMATION) {
-      var component = information.addInformation(itemStack, null);
+      var component = information.addInformation(itemStack);
       if (!component.isEmpty()) {
         extracted(tooltTipList, information.getMode(), component);
       }

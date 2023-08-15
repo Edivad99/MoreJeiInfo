@@ -9,7 +9,6 @@ import edivad.morejeiinfo.Translations;
 import edivad.morejeiinfo.platform.Services;
 import edivad.morejeiinfo.tooltip.Mode;
 import net.minecraft.network.chat.Component;
-import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 
 public class BurnTime implements Information {
@@ -21,7 +20,7 @@ public class BurnTime implements Information {
   }
 
   @Override
-  public List<Component> addInformation(ItemStack itemStack, Player player) {
+  public List<Component> addInformation(ItemStack itemStack) {
     int burnTime = 0;
     try {
       burnTime = Services.PLATFORM.getItemStackHelper().getBurnTime(itemStack);

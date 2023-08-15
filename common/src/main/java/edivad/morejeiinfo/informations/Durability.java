@@ -5,7 +5,6 @@ import java.util.function.Supplier;
 import edivad.morejeiinfo.Translations;
 import edivad.morejeiinfo.tooltip.Mode;
 import net.minecraft.network.chat.Component;
-import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 
 public class Durability implements Information {
@@ -17,7 +16,7 @@ public class Durability implements Information {
   }
 
   @Override
-  public List<Component> addInformation(ItemStack itemStack, Player player) {
+  public List<Component> addInformation(ItemStack itemStack) {
     int maxDamage = itemStack.getMaxDamage();
     int currentDamage = maxDamage - itemStack.getDamageValue();
     if (maxDamage > 0) {

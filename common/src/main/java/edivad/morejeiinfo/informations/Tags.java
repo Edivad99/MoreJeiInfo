@@ -9,7 +9,6 @@ import edivad.morejeiinfo.Translations;
 import edivad.morejeiinfo.tooltip.Mode;
 import net.minecraft.network.chat.Component;
 import net.minecraft.tags.TagKey;
-import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 
 public class Tags implements Information {
@@ -21,7 +20,7 @@ public class Tags implements Information {
   }
 
   @Override
-  public List<Component> addInformation(ItemStack itemStack, Player player) {
+  public List<Component> addInformation(ItemStack itemStack) {
     if (itemStack.getTags().findAny().isPresent()) {
       var result = new ArrayList<Component>();
       result.add(Component.translatable(Translations.TAGS));

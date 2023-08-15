@@ -7,7 +7,6 @@ import java.util.function.Supplier;
 import edivad.morejeiinfo.Translations;
 import edivad.morejeiinfo.tooltip.Mode;
 import net.minecraft.network.chat.Component;
-import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 
 public class Food implements Information {
@@ -19,7 +18,7 @@ public class Food implements Information {
   }
 
   @Override
-  public List<Component> addInformation(ItemStack itemStack, Player player) {
+  public List<Component> addInformation(ItemStack itemStack) {
     var item = itemStack.getItem();
     var foodProperties = item.getFoodProperties();
     if (item.isEdible() && foodProperties != null) {

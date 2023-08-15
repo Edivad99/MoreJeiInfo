@@ -55,7 +55,7 @@ public class TooltipEventHandler {
     }
 
     for (var information : INFORMATION) {
-      var component = information.addInformation(itemStack, player);
+      var component = information.addInformation(itemStack);
       if (!component.isEmpty()) {
         registerTooltip(e, component, information.getMode());
       }
