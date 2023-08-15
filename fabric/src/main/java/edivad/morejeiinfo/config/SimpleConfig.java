@@ -132,7 +132,11 @@ public class SimpleConfig {
    */
   public <T extends Enum<T>> T getEnumOrDefault(String key, T def, Class<T> enumClass) {
     String val = config.get(key);
-    return val == null ? def : Enum.valueOf(enumClass, val);
+    try {
+      return val == null ? def : Enum.valueOf(enumClass, val);
+    } catch (IllegalArgumentException | NullPointerException e) {
+      return def;
+    }
   }
 
   /**
