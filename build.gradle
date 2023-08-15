@@ -2,20 +2,13 @@ import se.bjurr.gitchangelog.plugin.gradle.GitChangelogTask
 import static org.apache.commons.lang3.StringUtils.repeat
 
 plugins {
-    id 'eclipse'
-    id 'idea'
-    id 'net.neoforged.gradle' version '[6.0.18,6.2)'
-    id 'org.parchmentmc.librarian.forgegradle' version '1.+'
+    id 'fabric-loom' version '1.2-SNAPSHOT' apply(false)
+    id 'net.neoforged.gradle' version '[6.0.18,6.2)' apply(false)
+    id 'org.spongepowered.gradle.vanilla' version '0.2.1-SNAPSHOT' apply(false)
+    id("org.spongepowered.mixin") version "0.7-SNAPSHOT" apply(false)
     id 'se.bjurr.gitchangelog.git-changelog-gradle-plugin' version '1.79.0'
     id 'me.modmuss50.mod-publish-plugin' version '0.3.3'
 }
-
-version = "$minecraft_version-$mod_version"
-group = 'edivad.morejeiinfo'
-
-base.archivesName = "MoreJeiInfo-${minecraft_version}"
-
-java.toolchain.languageVersion = JavaLanguageVersion.of(17)
 
 println(repeat('*', 60))
 println("Project Version: $version")
@@ -24,85 +17,68 @@ println("JVM: ${System.getProperty('java.vm.version')} (${System.getProperty('ja
 println("Arch: ${System.getProperty('os.arch')}")
 println(repeat('*', 60))
 
-minecraft {
-    mappings channel: mapping_channel, version: mapping_version
+subprojects {
+    apply plugin: 'java'
 
-    copyIdeResources = true
+    java.toolchain.languageVersion = JavaLanguageVersion.of(17)
+    java.withSourcesJar()
+    java.withJavadocJar()
 
-    runs {
-        configureEach {
-            property 'forge.logging.console.level', 'debug'
-
-            mods {
-                morejeiinfo {
-                    source sourceSets.main
-                }
-            }
+    jar {
+        from(rootProject.file("LICENSE")) {
+            rename { "${it}_${mod_name}" }
         }
-
-        client {
-            workingDirectory project.file('run/client')
+        manifest {
+            attributes([
+                    'Specification-Title'     : mod_name,
+                    'Specification-Vendor'    : mod_author,
+                    'Specification-Version'   : project.jar.archiveVersion,
+                    'Implementation-Title'    : project.name,
+                    'Implementation-Version'  : project.jar.archiveVersion,
+                    'Implementation-Vendor'   : mod_author,
+                    'Implementation-Timestamp': new Date().format("yyyy-MM-dd'T'HH:mm:ssZ"),
+            ])
         }
+    }
 
-        server {
-            workingDirectory project.file('run/server')
+    sourcesJar {
+        from(rootProject.file("LICENSE")) {
+            rename { "${it}_${mod_name}" }
         }
+    }
 
-        data {
-            workingDirectory project.file('run/data')
-            args '--mod', 'morejeiinfo', '--all', '--output', file('src/generated/resources/'), '--existing', file('src/main/resources/')
+    repositories {
+        mavenCentral()
+        maven {
+            name = 'Sponge'
+            url = 'https://repo.spongepowered.org/repository/maven-public/'
         }
+        maven {
+            name = 'JEI'
+            url = 'https://maven.blamejared.com'
+        }
+    }
+
+    tasks.withType(JavaCompile).configureEach {
+        it.options.encoding = 'UTF-8'
+        it.options.getRelease().set(17)
+    }
+
+    processResources {
+        filesMatching(['pack.mcmeta', 'fabric.mod.json', 'mods.toml']) {
+            expand project.properties
+        }
+    }
+
+    // Disables Gradle's custom module metadata from being published to maven. The
+    // metadata includes mapped dependencies which are not reasonably consumable by
+    // other mod developers.
+    tasks.withType(GenerateModuleMetadata).configureEach {
+        enabled = false
     }
 }
 
-sourceSets.main.resources { srcDir 'src/generated/resources' }
-
-repositories {
-    maven {
-        name 'JEI'
-        url 'https://maven.blamejared.com/'
-    }
-}
-
-dependencies {
-    minecraft "net.neoforged:forge:${minecraft_version}-${neo_version}"
-
-    compileOnly fg.deobf("mezz.jei:jei-$minecraft_version-common-api:$jei_version")
-    compileOnly fg.deobf("mezz.jei:jei-$minecraft_version-forge-api:$jei_version")
-    runtimeOnly fg.deobf("mezz.jei:jei-$minecraft_version-forge:$jei_version")
-}
-
-tasks.withType(ProcessResources).configureEach {
-    var replaceProperties = [
-        mod_version: mod_version
-    ]
-    inputs.properties replaceProperties
-
-    filesMatching(['META-INF/mods.toml', 'pack.mcmeta']) {
-        expand replaceProperties + [project: project]
-    }
-}
-
-tasks.named('jar', Jar).configure {
-    manifest {
-        attributes([
-                'Specification-Title'     : project.name,
-                'Specification-Vendor'    : 'Edivad99',
-                'Specification-Version'   : '1',
-                'Implementation-Title'    : project.name,
-                'Implementation-Version'  : project.version,
-                'Implementation-Vendor'   : 'Edivad99',
-                'Implementation-Timestamp': new Date().format("yyyy-MM-dd'T'HH:mm:ssZ")
-        ])
-    }
-    finalizedBy 'reobfJar'
-}
-
-tasks.withType(JavaCompile).configureEach {
-    options.encoding = 'UTF-8'
-}
-
-tasks.register('makeChangelog', GitChangelogTask) {
+/*tasks.register('makeChangelog', GitChangelogTask) {
     fromRepo = projectDir.absolutePath.toString()
     toRef = 'HEAD'
     file = file('CHANGELOG.md')
@@ -135,3 +111,4 @@ publishMods {
         minecraftVersions.add(minecraft_version)
     }
 }
+*/

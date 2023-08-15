@@ -1,0 +1,29 @@
+{
+    "schemaVersion": 1,
+    "id": "${mod_id}",
+    "version": "${mod_version}",
+    "name": "${mod_name}",
+    "description": "MoreJeiInfo, the successor to JEI Integration by SnowShock35",
+    "authors": [
+        "Edivad99"
+    ],
+    "contact": {
+        "sources": "https://github.com/Edivad99/MoreJeiInfo"
+    },
+    "license": "MIT",
+    "environment": "*",
+    "entrypoints": {
+        "fabric-datagen": [
+            "edivad.morejeiinfo.data.DataGeneration"
+        ],
+        "client": [
+            "edivad.morejeiinfo.MoreJeiInfo"
+        ]
+    },
+    "depends": {
+        "fabricloader": ">=${fabricLoaderVersion}",
+        "fabric-api": ">=${fabricApiVersion}",
+        "java": ">=17"
+    }
+}
+  
