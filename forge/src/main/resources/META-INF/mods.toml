@@ -4,23 +4,23 @@ license = "MIT"
 issueTrackerURL = "https://github.com/Edivad99/MoreJeiInfo/issues"
 
 [[mods]]
-  modId = "morejeiinfo"
-  version = "${mod_version}"
-  displayName = "${mod_name}"
-  displayURL = "https://github.com/Edivad99/MoreJeiInfo"
-  authors = "Edivad99"
-  displayTest = "NONE"
-  description = "MoreJeiInfo, the successor to JEI Integration by SnowShock35"
+modId = "morejeiinfo"
+version = "${mod_version}"
+displayName = "${mod_name}"
+displayURL = "https://github.com/Edivad99/MoreJeiInfo"
+authors = "Edivad99"
+displayTest = "NONE"
+description = "MoreJeiInfo, the successor to JEI Integration by SnowShock35"
 
 [[dependencies.morejeiinfo]]
-  modId = "forge"
-  mandatory = true
-  versionRange = "[47,)"
-  ordering = "NONE"
-  side = "BOTH"
+modId = "forge"
+mandatory = true
+versionRange = "[47,)"
+ordering = "NONE"
+side = "BOTH"
 [[dependencies.morejeiinfo]]
-  modId = "minecraft"
-  mandatory = true
-  versionRange = "[1.20.1,1.21)"
-  ordering = "NONE"
-  side = "BOTH"
+modId = "minecraft"
+mandatory = true
+versionRange = "[1.20.1,1.21)"
+ordering = "NONE"
+side = "BOTH"

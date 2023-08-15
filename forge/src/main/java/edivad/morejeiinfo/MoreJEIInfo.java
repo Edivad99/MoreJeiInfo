@@ -15,12 +15,14 @@ import net.minecraftforge.network.NetworkConstants;
 
 @Mod(Shared.ID)
 public class MoreJEIInfo {
+
   public MoreJEIInfo() {
     var modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
     modEventBus.register(Config.class);
     modEventBus.addListener(this::handleGatherData);
 
-    DistExecutor.unsafeRunWhenOn(Dist.CLIENT, () -> () -> MinecraftForge.EVENT_BUS.register(new TooltipEventHandler()));
+    DistExecutor.unsafeRunWhenOn(Dist.CLIENT,
+        () -> () -> MinecraftForge.EVENT_BUS.register(new TooltipEventHandler()));
 
     var modLoadingContext = ModLoadingContext.get();
     modLoadingContext.registerConfig(ModConfig.Type.CLIENT, Config.CLIENT_SPEC);

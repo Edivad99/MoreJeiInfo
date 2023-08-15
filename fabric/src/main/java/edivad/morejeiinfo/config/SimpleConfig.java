@@ -125,8 +125,8 @@ public class SimpleConfig {
   }
 
   /**
-   * Returns enum value from config corresponding to the given key,
-   * or the default enum if the key is missing.
+   * Returns enum value from config corresponding to the given key, or the default enum if the key
+   * is missing.
    *
    * @return value corresponding to the given key, or the default value
    */

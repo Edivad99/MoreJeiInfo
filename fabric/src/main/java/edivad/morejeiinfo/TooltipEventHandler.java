@@ -21,6 +21,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 
 public class TooltipEventHandler {
+
   public static List<Information> INFORMATION = new ArrayList<>();
 
   static {

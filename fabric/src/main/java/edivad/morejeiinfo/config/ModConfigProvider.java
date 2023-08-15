@@ -9,10 +9,16 @@ import edivad.morejeiinfo.tooltip.Mode;
 
 public class ModConfigProvider implements SimpleConfig.DefaultConfig {
 
+  private static final String ALLOWED_VALUES = "Allowable values: " + getNames(Mode.class);
   private final List<Pair<String, ?>> configsList = new ArrayList<>();
   private String configContents = "";
 
-  private static final String ALLOWED_VALUES = "Allowable values: " + getNames(Mode.class);
+  private static String getNames(Class<? extends Enum<?>> e) {
+    return Arrays.stream(e.getEnumConstants())
+        .map(Enum::name)
+        .collect(Collectors.joining(", "));
+  }
+
   public List<Pair<String, ?>> getConfigsList() {
     return configsList;
   }
@@ -23,12 +29,6 @@ public class ModConfigProvider implements SimpleConfig.DefaultConfig {
     var snd = keyValuePair.getSecond();
 
     configContents += fst + "=" + snd + " #" + ALLOWED_VALUES + " | default: " + snd + "\n";
-  }
-
-  private static String getNames(Class<? extends Enum<?>> e) {
-    return Arrays.stream(e.getEnumConstants())
-        .map(Enum::name)
-        .collect(Collectors.joining(", "));
   }
 
   @Override

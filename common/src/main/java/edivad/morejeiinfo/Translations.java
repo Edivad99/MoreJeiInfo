@@ -25,12 +25,6 @@ public class Translations {
   public static final String STACK_SIZE_MODE = makeKey("config", "stackSizeMode");
   public static final String TAGS_MODE = makeKey("config", "tagsMode");
   public static final String TRANSLATION_KEY_MODE = makeKey("config", "translationKeyMode");
-
-
-  public static String makeKey(String type, String name) {
-    return type + "." + Shared.ID + "." + name;
-  }
-
   public static List<Pair<String, String>> TRANSLATIONS = new ArrayList<>();
 
   static {
@@ -52,5 +46,9 @@ public class Translations {
     TRANSLATIONS.add(new Pair<>(Translations.STACK_SIZE_MODE, "Max stack size Tooltip"));
     TRANSLATIONS.add(new Pair<>(Translations.TAGS_MODE, "Tags Tooltip"));
     TRANSLATIONS.add(new Pair<>(Translations.TRANSLATION_KEY_MODE, "Translation key Tooltip"));
+  }
+
+  public static String makeKey(String type, String name) {
+    return type + "." + Shared.ID + "." + name;
   }
 }

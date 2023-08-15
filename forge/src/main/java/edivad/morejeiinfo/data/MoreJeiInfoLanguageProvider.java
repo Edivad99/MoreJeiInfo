@@ -13,7 +13,7 @@ public class MoreJeiInfoLanguageProvider extends LanguageProvider {
 
   @Override
   protected void addTranslations() {
-    for(var line: Translations.TRANSLATIONS) {
+    for (var line : Translations.TRANSLATIONS) {
       this.add(line.getFirst(), line.getSecond());
     }
   }

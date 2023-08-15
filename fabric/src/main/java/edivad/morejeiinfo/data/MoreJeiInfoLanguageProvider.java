@@ -12,7 +12,7 @@ public class MoreJeiInfoLanguageProvider extends FabricLanguageProvider {
 
   @Override
   public void generateTranslations(TranslationBuilder translationBuilder) {
-    for(var line: Translations.TRANSLATIONS) {
+    for (var line : Translations.TRANSLATIONS) {
       translationBuilder.add(line.getFirst(), line.getSecond());
     }
   }

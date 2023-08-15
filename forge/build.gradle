@@ -59,7 +59,7 @@ dependencies {
 tasks.withType(ProcessResources).configureEach {
     var replaceProperties = [
             mod_version: mod_version,
-            mod_name: mod_name
+            mod_name   : mod_name
     ]
     inputs.properties replaceProperties
 

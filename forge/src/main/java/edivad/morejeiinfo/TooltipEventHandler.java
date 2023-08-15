@@ -21,6 +21,7 @@ import net.minecraftforge.event.entity.player.ItemTooltipEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 
 public class TooltipEventHandler {
+
   public static List<Information> INFORMATION = new ArrayList<>();
 
   static {
