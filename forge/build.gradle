@@ -3,7 +3,7 @@ plugins {
     id 'net.neoforged.gradle'
     id 'me.modmuss50.mod-publish-plugin' version '0.3.3'
 }
-base.archivesName = "${mod_id}-forge-${minecraft_version}"
+base.archivesName = "$mod_id-forge-$minecraft_version-$mod_version"
 
 minecraft {
     mappings channel: 'official', version: minecraft_version
@@ -53,7 +53,7 @@ minecraft {
 sourceSets.main.resources.srcDir 'src/generated/resources'
 
 dependencies {
-    minecraft "net.neoforged:forge:${minecraft_version}-${neo_version}"
+    minecraft "net.neoforged:forge:$minecraft_version-$neo_version"
     compileOnly project(':common')
 }
 
@@ -80,7 +80,7 @@ processResources {
 jar.finalizedBy('reobfJar')
 
 publishMods {
-    displayName = "$mod_id-$minecraft_version-$mod_version"
+    displayName = "$mod_id-forge-$minecraft_version-$mod_version"
     version = mod_version
     type = STABLE
 
