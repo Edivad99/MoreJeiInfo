@@ -4,6 +4,7 @@ import java.util.Objects;
 import edivad.morejeiinfo.platform.services.IPlatformItemStackHelper;
 import net.fabricmc.fabric.api.registry.FuelRegistry;
 import net.fabricmc.fabric.api.transfer.v1.item.ItemVariant;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.item.ItemStack;
 
@@ -25,7 +26,7 @@ public class ItemStackHelper implements IPlatformItemStackHelper {
   }
 
   @Override
-  public String getItemKey(ItemStack itemStack) {
-    return itemStack.getItem().getDescriptionId(itemStack);
+  public String getRegistryName(ItemStack itemStack) {
+    return BuiltInRegistries.ITEM.getKey(itemStack.getItem()).toString();
   }
 }

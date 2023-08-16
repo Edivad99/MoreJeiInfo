@@ -18,7 +18,7 @@ public class RegistryName implements Information {
 
   @Override
   public List<Component> addInformation(ItemStack itemStack) {
-    var key = Services.PLATFORM.getItemStackHelper().getItemKey(itemStack);
+    var key = Services.PLATFORM.getItemStackHelper().getRegistryName(itemStack);
     return List.of(Component.translatable(Translations.REGISTRY_NAME, key));
   }
 

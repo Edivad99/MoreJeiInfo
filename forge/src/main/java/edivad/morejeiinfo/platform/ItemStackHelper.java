@@ -25,7 +25,7 @@ public class ItemStackHelper implements IPlatformItemStackHelper {
   }
 
   @Override
-  public String getItemKey(ItemStack itemStack) {
+  public String getRegistryName(ItemStack itemStack) {
     return ForgeRegistries.ITEMS.getKey(itemStack.getItem()).toString();
   }
 }

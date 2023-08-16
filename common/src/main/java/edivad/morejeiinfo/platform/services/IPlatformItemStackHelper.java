@@ -11,6 +11,6 @@ public interface IPlatformItemStackHelper {
 
   CompoundTag getNBTData(ItemStack stack);
 
-  String getItemKey(ItemStack itemStack);
+  String getRegistryName(ItemStack itemStack);
 }
 
