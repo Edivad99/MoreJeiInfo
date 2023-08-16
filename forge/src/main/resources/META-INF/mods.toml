@@ -10,7 +10,7 @@ displayName = "${mod_name}"
 displayURL = "https://github.com/Edivad99/MoreJeiInfo"
 authors = "Edivad99"
 displayTest = "NONE"
-description = "MoreJeiInfo, the successor to JEI Integration by SnowShock35"
+description = "Adds more information in tooltips"
 
 [[dependencies.morejeiinfo]]
 modId = "forge"
