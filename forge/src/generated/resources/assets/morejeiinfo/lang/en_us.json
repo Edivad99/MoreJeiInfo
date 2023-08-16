@@ -1,0 +1,20 @@
+{
+  "config.morejeiinfo.burnTimeMode": "Burn Time Tooltip",
+  "config.morejeiinfo.durabilityMode": "Durability Tooltip",
+  "config.morejeiinfo.enchantabilityMode": "Enchantability Tooltip",
+  "config.morejeiinfo.foodMode": "Hunger/Saturation Tooltip",
+  "config.morejeiinfo.nbtDataMode": "NBT Tooltip",
+  "config.morejeiinfo.registryNameMode": "Registry name Tooltip",
+  "config.morejeiinfo.stackSizeMode": "Max stack size Tooltip",
+  "config.morejeiinfo.tagsMode": "Tags Tooltip",
+  "config.morejeiinfo.translationKeyMode": "Translation key Tooltip",
+  "tooltip.morejeiinfo.burnTime": "Burn Time: %s ticks",
+  "tooltip.morejeiinfo.durability": "Durability: %s/%s",
+  "tooltip.morejeiinfo.enchantability": "Enchantability: %s",
+  "tooltip.morejeiinfo.hunger": "Hunger: %s Saturation: %s",
+  "tooltip.morejeiinfo.nbtData": "NBT: %s",
+  "tooltip.morejeiinfo.registryName": "Registry name: %s",
+  "tooltip.morejeiinfo.stackSize": "Max stack size: %s",
+  "tooltip.morejeiinfo.tags": "Tags:",
+  "tooltip.morejeiinfo.translationKey": "Translation key: %s"
+}

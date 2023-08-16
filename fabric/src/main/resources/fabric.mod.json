@@ -1,0 +1,30 @@
+{
+  "schemaVersion": 1,
+  "id": "${mod_id}",
+  "version": "${mod_version}",
+  "name": "${mod_name}",
+  "description": "Adds more information in tooltips",
+  "authors": [
+    "Edivad99"
+  ],
+  "contact": {
+    "sources": "https://github.com/Edivad99/MoreJeiInfo",
+    "issues": "https://github.com/Edivad99/MoreJeiInfo/issues"
+  },
+  "license": "MIT",
+  "environment": "client",
+  "entrypoints": {
+    "fabric-datagen": [
+      "edivad.morejeiinfo.data.DataGeneration"
+    ],
+    "client": [
+      "edivad.morejeiinfo.MoreJeiInfo"
+    ]
+  },
+  "depends": {
+    "fabricloader": ">=${fabricLoaderVersion}",
+    "fabric-api": ">=${fabricApiVersion}",
+    "java": ">=17"
+  }
+}
+  

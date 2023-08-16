@@ -1,0 +1,106 @@
+plugins {
+    id 'idea'
+    id 'net.neoforged.gradle'
+    id 'me.modmuss50.mod-publish-plugin' version '0.3.3'
+}
+base.archivesName = "${mod_id}-forge-${minecraft_version}"
+
+minecraft {
+    mappings channel: 'official', version: minecraft_version
+
+    runs {
+        configureEach {
+            property 'forge.logging.console.level', 'debug'
+            ideaModule "${rootProject.name}.${project.name}.main"
+        }
+
+        client {
+            workingDirectory project.file('run/client')
+            taskName 'Client'
+            mods {
+                modClientRun {
+                    source sourceSets.main
+                    source project(':common').sourceSets.main
+                }
+            }
+        }
+
+        server {
+            workingDirectory project.file('run/server')
+            taskName 'Server'
+            mods {
+                modServerRun {
+                    source sourceSets.main
+                    source project(':common').sourceSets.main
+                }
+            }
+        }
+
+        data {
+            workingDirectory project.file('run/data')
+            args '--mod', mod_id, '--all', '--output', file('src/generated/resources/'), '--existing', file('src/main/resources/')
+            taskName 'Data'
+            mods {
+                modDataRun {
+                    source sourceSets.main
+                    source project(':common').sourceSets.main
+                }
+            }
+        }
+    }
+}
+
+sourceSets.main.resources.srcDir 'src/generated/resources'
+
+dependencies {
+    minecraft "net.neoforged:forge:${minecraft_version}-${neo_version}"
+    compileOnly project(':common')
+}
+
+tasks.withType(ProcessResources).configureEach {
+    var replaceProperties = [
+            mod_version: mod_version,
+            mod_name   : mod_name
+    ]
+    inputs.properties replaceProperties
+
+    filesMatching(['META-INF/mods.toml', 'pack.mcmeta']) {
+        expand replaceProperties + [project: project]
+    }
+}
+
+tasks.withType(JavaCompile).configureEach {
+    source(project(':common').sourceSets.main.allSource)
+}
+
+processResources {
+    from project(':common').sourceSets.main.resources
+}
+
+jar.finalizedBy('reobfJar')
+
+publishMods {
+    displayName = "$mod_id-$minecraft_version-$mod_version"
+    version = mod_version
+    type = STABLE
+
+    def changelogFile = project(':common').file('CHANGELOG.md')
+    changelog = changelogFile.exists() ? changelogFile.text : 'CHANGELOG.md not found'
+
+    modLoaders.add('neoforge')
+    if (minecraft_version.equals('1.20.1')) {
+        modLoaders.add('forge')
+    }
+    file = jar.archiveFile
+
+    curseforge {
+        projectId = curseforge_projectId
+        accessToken = providers.environmentVariable('CURSEFORGE_TOKEN')
+        minecraftVersions.add(minecraft_version)
+    }
+    modrinth {
+        projectId = modrinth_projectId
+        accessToken = providers.environmentVariable('MODRINTH_TOKEN')
+        minecraftVersions.add(minecraft_version)
+    }
+}

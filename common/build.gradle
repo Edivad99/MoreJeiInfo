@@ -1,0 +1,21 @@
+import se.bjurr.gitchangelog.plugin.gradle.GitChangelogTask
+
+plugins {
+    id 'idea'
+    id 'java'
+    id 'org.spongepowered.gradle.vanilla'
+    id 'se.bjurr.gitchangelog.git-changelog-gradle-plugin' version '1.79.0'
+}
+base.archivesName = "${mod_id}-common-${minecraft_version}"
+
+minecraft {
+    version(minecraft_version)
+}
+
+tasks.register('makeChangelog', GitChangelogTask) {
+    fromRepo = projectDir.absolutePath.toString()
+    toRef = 'HEAD'
+    file = file('CHANGELOG.md')
+    untaggedName = 'Next release'
+    templateContent = file('changelog.mustache').text
+}
