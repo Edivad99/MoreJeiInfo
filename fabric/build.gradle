@@ -2,6 +2,7 @@ plugins {
     id 'java'
     id 'idea'
     id 'fabric-loom'
+    id 'me.modmuss50.mod-publish-plugin' version '0.3.3'
 }
 base.archivesName = "${mod_id}-fabric-${minecraft_version}"
 
@@ -45,4 +46,27 @@ tasks.withType(JavaCompile).configureEach {
 
 processResources {
     from project(':common').sourceSets.main.resources
+}
+
+publishMods {
+    displayName = "$mod_id-$minecraft_version-$mod_version"
+    version = mod_version
+    type = STABLE
+
+    def changelogFile = project(':common').file('CHANGELOG.md')
+    changelog = changelogFile.exists() ? changelogFile.text : 'CHANGELOG.md not found'
+
+    modLoaders.add('fabric')
+    file = remapJar.archiveFile
+
+    curseforge {
+        projectId = curseforge_projectId
+        accessToken = providers.environmentVariable('CURSEFORGE_TOKEN')
+        minecraftVersions.add(minecraft_version)
+    }
+    modrinth {
+        projectId = modrinth_projectId
+        accessToken = providers.environmentVariable('MODRINTH_TOKEN')
+        minecraftVersions.add(minecraft_version)
+    }
 }

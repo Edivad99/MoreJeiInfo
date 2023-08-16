@@ -1,6 +1,7 @@
 plugins {
     id 'idea'
     id 'net.neoforged.gradle'
+    id 'me.modmuss50.mod-publish-plugin' version '0.3.3'
 }
 base.archivesName = "${mod_id}-forge-${minecraft_version}"
 
@@ -77,3 +78,29 @@ processResources {
 }
 
 jar.finalizedBy('reobfJar')
+
+publishMods {
+    displayName = "$mod_id-$minecraft_version-$mod_version"
+    version = mod_version
+    type = STABLE
+
+    def changelogFile = project(':common').file('CHANGELOG.md')
+    changelog = changelogFile.exists() ? changelogFile.text : 'CHANGELOG.md not found'
+
+    modLoaders.add('neoforge')
+    if (minecraft_version.equals('1.20.1')) {
+        modLoaders.add('forge')
+    }
+    file = jar.archiveFile
+
+    curseforge {
+        projectId = curseforge_projectId
+        accessToken = providers.environmentVariable('CURSEFORGE_TOKEN')
+        minecraftVersions.add(minecraft_version)
+    }
+    modrinth {
+        projectId = modrinth_projectId
+        accessToken = providers.environmentVariable('MODRINTH_TOKEN')
+        minecraftVersions.add(minecraft_version)
+    }
+}
