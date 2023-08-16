@@ -33,7 +33,7 @@ jobs:
 
       - name: Publish
         run: |
-          - rm -f forge/build/libs/*
-          - ./gradlew forge:publishMods --no-daemon --max-workers 1
-          - rm -f fabric/build/libs/*
-          - ./gradlew fabric:publishMods --no-daemon --max-workers 1
+          rm -f forge/build/libs/*
+          ./gradlew forge:publishMods --no-daemon --max-workers 1
+          rm -f fabric/build/libs/*
+          ./gradlew fabric:publishMods --no-daemon --max-workers 1
