@@ -13,9 +13,7 @@ import edivad.morejeiinfo.informations.NBTData;
 import edivad.morejeiinfo.informations.RegistryName;
 import edivad.morejeiinfo.informations.Tags;
 import edivad.morejeiinfo.informations.TranslationKey;
-import edivad.morejeiinfo.tooltip.Mode;
 import edivad.morejeiinfo.tooltip.TooltipUtils;
-import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
@@ -36,27 +34,8 @@ public class TooltipEventHandler {
     INFORMATION.add(new TranslationKey(() -> Config.translationKeyTooltipMode));
   }
 
-  private static void extracted(List<Component> lines, Mode mode,
-      List<Component> component) {
-    if (TooltipUtils.isVisible(mode)) {
-      for (var tooltip : component) {
-        lines.add(tooltip.copy().withStyle(ChatFormatting.DARK_GRAY));
-      }
-    }
-  }
-
   public static void onItemTooltip(ItemStack itemStack, TooltipFlag flag,
       List<Component> tooltTipList) {
-
-    if (itemStack.isEmpty()) {
-      return;
-    }
-
-    for (var information : INFORMATION) {
-      var component = information.addInformation(itemStack);
-      if (!component.isEmpty()) {
-        extracted(tooltTipList, information.getMode(), component);
-      }
-    }
+    TooltipUtils.addTooltips(tooltTipList, INFORMATION, itemStack);
   }
 }
