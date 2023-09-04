@@ -4,7 +4,7 @@ plugins {
     id 'idea'
     id 'java'
     id 'org.spongepowered.gradle.vanilla'
-    id 'se.bjurr.gitchangelog.git-changelog-gradle-plugin' version '1.79.0'
+    id 'se.bjurr.gitchangelog.git-changelog-gradle-plugin' version '1.80.0'
 }
 base.archivesName = "$mod_id-common-$minecraft_version-$mod_version"
 
@@ -14,8 +14,9 @@ minecraft {
 
 tasks.register('makeChangelog', GitChangelogTask) {
     fromRepo = projectDir.absolutePath.toString()
-    toRef = 'HEAD'
+    toRevision = 'HEAD'
     file = file('CHANGELOG.md')
     untaggedName = 'Next release'
     templateContent = file('changelog.mustache').text
+    ignoreCommitsIfMessageMatches = '^.*Merge branch.*$'
 }

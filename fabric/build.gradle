@@ -63,10 +63,16 @@ publishMods {
         projectId = curseforge_projectId
         accessToken = providers.environmentVariable('CURSEFORGE_TOKEN')
         minecraftVersions.add(minecraft_version)
+        requires {
+            slug = 'fabric-api'
+        }
     }
     modrinth {
         projectId = modrinth_projectId
         accessToken = providers.environmentVariable('MODRINTH_TOKEN')
         minecraftVersions.add(minecraft_version)
+        requires {
+            slug = 'fabric-api'
+        }
     }
 }
