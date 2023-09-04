@@ -26,14 +26,10 @@ jobs:
           cache: 'gradle'
 
       - name: Build with Gradle
-        run: ./gradlew build --no-daemon --max-workers 1
+        run: ./gradlew build --max-workers 1
 
       - name: Make Changelog
-        run: ./gradlew common:makeChangelog --no-daemon --max-workers 1
+        run: ./gradlew common:makeChangelog --max-workers 1
 
       - name: Publish
-        run: |
-          rm -f forge/build/libs/*
-          ./gradlew forge:publishMods --no-daemon --max-workers 1
-          rm -f fabric/build/libs/*
-          ./gradlew fabric:publishMods --no-daemon --max-workers 1
+        run: ./gradlew forge:publishMods fabric:publishMods --max-workers 1
