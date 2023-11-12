@@ -4,14 +4,14 @@ import edivad.morejeiinfo.platform.services.IPlatformItemStackHelper;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.RecipeType;
-import net.minecraftforge.common.ForgeHooks;
-import net.minecraftforge.registries.ForgeRegistries;
+import net.neoforged.neoforge.common.CommonHooks;
+import net.neoforged.neoforge.registries.ForgeRegistries;
 
 public class ItemStackHelper implements IPlatformItemStackHelper {
 
   @Override
   public int getBurnTime(ItemStack itemStack) {
-    return ForgeHooks.getBurnTime(itemStack, RecipeType.SMELTING);
+    return CommonHooks.getBurnTime(itemStack, RecipeType.SMELTING);
   }
 
   @Override

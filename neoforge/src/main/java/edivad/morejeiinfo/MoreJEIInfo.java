@@ -2,27 +2,26 @@ package edivad.morejeiinfo;
 
 import edivad.morejeiinfo.config.Config;
 import edivad.morejeiinfo.data.MoreJeiInfoLanguageProvider;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.data.event.GatherDataEvent;
-import net.minecraftforge.fml.DistExecutor;
-import net.minecraftforge.fml.IExtensionPoint;
-import net.minecraftforge.fml.ModLoadingContext;
-import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.config.ModConfig;
-import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
-import net.minecraftforge.network.NetworkConstants;
+import net.neoforged.api.distmarker.Dist;
+import net.neoforged.bus.api.IEventBus;
+import net.neoforged.fml.IExtensionPoint;
+import net.neoforged.fml.ModLoadingContext;
+import net.neoforged.fml.common.Mod;
+import net.neoforged.fml.config.ModConfig;
+import net.neoforged.neoforge.common.NeoForge;
+import net.neoforged.neoforge.data.event.GatherDataEvent;
+import net.neoforged.neoforge.network.NetworkConstants;
 
 @Mod(Shared.ID)
 public class MoreJEIInfo {
 
-  public MoreJEIInfo() {
-    var modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
+  public MoreJEIInfo(IEventBus modEventBus, Dist dist) {
     modEventBus.register(Config.class);
     modEventBus.addListener(this::handleGatherData);
 
-    DistExecutor.unsafeRunWhenOn(Dist.CLIENT,
-        () -> () -> MinecraftForge.EVENT_BUS.register(new TooltipEventHandler()));
+    if (dist.isClient()) {
+      NeoForge.EVENT_BUS.register(new TooltipEventHandler());
+    }
 
     var modLoadingContext = ModLoadingContext.get();
     modLoadingContext.registerConfig(ModConfig.Type.CLIENT, Config.CLIENT_SPEC);

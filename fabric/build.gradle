@@ -2,7 +2,7 @@ plugins {
     id 'java'
     id 'idea'
     id 'fabric-loom'
-    id 'me.modmuss50.mod-publish-plugin' version '0.3.3'
+    id 'me.modmuss50.mod-publish-plugin' version '0.4.2'
 }
 base.archivesName = "$mod_id-fabric-$minecraft_version-$mod_version"
 
@@ -33,7 +33,7 @@ loom {
             setConfigName('Fabric Data')
             vmArg '-Dfabric-api.datagen'
             vmArg "-Dfabric-api.datagen.output-dir=${file("src/main/generated")}"
-            vmArg "-Dfabric-api.datagen.modid=${mod_id}"
+            vmArg "-Dfabric-api.datagen.modid=$mod_id"
             runDir('run/data')
         }
     }

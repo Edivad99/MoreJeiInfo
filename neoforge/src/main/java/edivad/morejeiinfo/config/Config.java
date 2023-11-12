@@ -3,19 +3,19 @@ package edivad.morejeiinfo.config;
 import edivad.morejeiinfo.Shared;
 import edivad.morejeiinfo.Translations;
 import edivad.morejeiinfo.tooltip.Mode;
-import net.minecraftforge.common.ForgeConfigSpec;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.event.config.ModConfigEvent;
+import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.common.Mod;
+import net.neoforged.fml.event.config.ModConfigEvent;
+import net.neoforged.neoforge.common.ModConfigSpec;
 
 @Mod.EventBusSubscriber(modid = Shared.ID, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class Config {
 
-  public static final ForgeConfigSpec CLIENT_SPEC;
+  public static final ModConfigSpec CLIENT_SPEC;
   public static final Config.Client CLIENT;
 
   static {
-    final var specPair = new ForgeConfigSpec.Builder().configure(Config.Client::new);
+    final var specPair = new ModConfigSpec.Builder().configure(Config.Client::new);
     CLIENT_SPEC = specPair.getRight();
     CLIENT = specPair.getLeft();
   }
@@ -33,17 +33,17 @@ public class Config {
 
   public static class Client {
 
-    public final ForgeConfigSpec.EnumValue<Mode> burnTimeTooltipMode;
-    public final ForgeConfigSpec.EnumValue<Mode> durabilityTooltipMode;
-    public final ForgeConfigSpec.EnumValue<Mode> enchantabilityTooltipMode;
-    public final ForgeConfigSpec.EnumValue<Mode> foodTooltipMode;
-    public final ForgeConfigSpec.EnumValue<Mode> maxStackSizeTooltipMode;
-    public final ForgeConfigSpec.EnumValue<Mode> nbtTooltipMode;
-    public final ForgeConfigSpec.EnumValue<Mode> registryNameTooltipMode;
-    public final ForgeConfigSpec.EnumValue<Mode> tagsTooltipMode;
-    public final ForgeConfigSpec.EnumValue<Mode> translationKeyTooltipMode;
+    public final ModConfigSpec.EnumValue<Mode> burnTimeTooltipMode;
+    public final ModConfigSpec.EnumValue<Mode> durabilityTooltipMode;
+    public final ModConfigSpec.EnumValue<Mode> enchantabilityTooltipMode;
+    public final ModConfigSpec.EnumValue<Mode> foodTooltipMode;
+    public final ModConfigSpec.EnumValue<Mode> maxStackSizeTooltipMode;
+    public final ModConfigSpec.EnumValue<Mode> nbtTooltipMode;
+    public final ModConfigSpec.EnumValue<Mode> registryNameTooltipMode;
+    public final ModConfigSpec.EnumValue<Mode> tagsTooltipMode;
+    public final ModConfigSpec.EnumValue<Mode> translationKeyTooltipMode;
 
-    Client(ForgeConfigSpec.Builder builder) {
+    Client(ModConfigSpec.Builder builder) {
       builder.comment("Tooltip Settings")
           .comment("Tooltip Options")
           .push("tooltipOptions");

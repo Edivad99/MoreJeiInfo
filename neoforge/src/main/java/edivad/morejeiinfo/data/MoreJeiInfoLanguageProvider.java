@@ -3,7 +3,7 @@ package edivad.morejeiinfo.data;
 import edivad.morejeiinfo.Shared;
 import edivad.morejeiinfo.Translations;
 import net.minecraft.data.PackOutput;
-import net.minecraftforge.common.data.LanguageProvider;
+import net.neoforged.neoforge.common.data.LanguageProvider;
 
 public class MoreJeiInfoLanguageProvider extends LanguageProvider {
 

@@ -14,8 +14,8 @@ import edivad.morejeiinfo.informations.RegistryName;
 import edivad.morejeiinfo.informations.Tags;
 import edivad.morejeiinfo.informations.TranslationKey;
 import edivad.morejeiinfo.tooltip.TooltipUtils;
-import net.minecraftforge.event.entity.player.ItemTooltipEvent;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.neoforge.event.entity.player.ItemTooltipEvent;
 
 public class TooltipEventHandler {
 

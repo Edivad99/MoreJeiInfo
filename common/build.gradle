@@ -4,7 +4,7 @@ plugins {
     id 'idea'
     id 'java'
     id 'org.spongepowered.gradle.vanilla'
-    id 'se.bjurr.gitchangelog.git-changelog-gradle-plugin' version '1.80.0'
+    id 'se.bjurr.gitchangelog.git-changelog-gradle-plugin' version '1.81.3'
 }
 base.archivesName = "$mod_id-common-$minecraft_version-$mod_version"
 
@@ -12,8 +12,21 @@ minecraft {
     version(minecraft_version)
 }
 
+def penultimateTag = { ->
+    def stdout = new ByteArrayOutputStream()
+    try {
+        project.exec { ExecSpec spec ->
+            spec.commandLine('git', 'describe', '--abbrev=0', '--tags', 'HEAD~').standardOutput(stdout)
+        }.assertNormalExitValue().rethrowFailure()
+    } catch (Exception e) {
+        throw new IllegalStateException("Failed to get the tag; check if 'git' is on the PATH", e)
+    }
+    return stdout.toString()
+}
+
 tasks.register('makeChangelog', GitChangelogTask) {
     fromRepo = projectDir.absolutePath.toString()
+    fromRevision = penultimateTag()
     toRevision = 'HEAD'
     file = file('CHANGELOG.md')
     untaggedName = 'Next release'

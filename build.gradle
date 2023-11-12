@@ -1,24 +1,34 @@
-import static org.apache.commons.lang3.StringUtils.repeat
+//import static org.apache.commons.lang3.StringUtils.repeat
 
 plugins {
     id 'fabric-loom' version '1.2-SNAPSHOT' apply(false)
-    id 'net.neoforged.gradle' version '[6.0.18,6.2)' apply(false)
     id 'org.spongepowered.gradle.vanilla' version '0.2.1-SNAPSHOT' apply(false)
     id 'org.spongepowered.mixin' version "0.7-SNAPSHOT" apply(false)
 }
 
-println(repeat('*', 60))
+//println(repeat('*', 60))
 println("Project Version: $mod_version")
 println("Java: ${System.getProperty('java.version')}")
 println("JVM: ${System.getProperty('java.vm.version')} (${System.getProperty('java.vendor')})")
 println("Arch: ${System.getProperty('os.arch')}")
-println(repeat('*', 60))
+//println(repeat('*', 60))
+
+tasks.named('wrapper', Wrapper).configure {
+    //Define wrapper values here so as to not have to always do so when updating gradlew.properties
+    gradleVersion = '8.4'
+    distributionType = Wrapper.DistributionType.BIN
+}
+
 
 subprojects {
     apply plugin: 'java'
 
-    java.toolchain.languageVersion = JavaLanguageVersion.of(17)
-
+    java {
+        toolchain {
+            languageVersion = JavaLanguageVersion.of(17)
+            vendor = JvmVendorSpec.JETBRAINS
+        }
+    }
     jar {
         from(rootProject.file("LICENSE")) {
             rename { "${it}_${mod_name}" }
@@ -31,7 +41,7 @@ subprojects {
                     'Implementation-Title'    : project.name,
                     'Implementation-Version'  : mod_version,
                     'Implementation-Vendor'   : 'Edivad99',
-                    'Implementation-Timestamp': new Date().format("yyyy-MM-dd'T'HH:mm:ssZ"),
+                    'Implementation-Commit'   : 'git rev-parse HEAD'.execute().text.trim(),
             ])
         }
     }
