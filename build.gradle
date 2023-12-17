@@ -1,6 +1,8 @@
 //import static org.apache.commons.lang3.StringUtils.repeat
 
 plugins {
+    id 'java-library'
+    id 'java'
     id 'fabric-loom' version '1.2-SNAPSHOT' apply(false)
     id 'org.spongepowered.gradle.vanilla' version '0.2.1-SNAPSHOT' apply(false)
     id 'org.spongepowered.mixin' version "0.7-SNAPSHOT" apply(false)
@@ -13,12 +15,12 @@ println("JVM: ${System.getProperty('java.vm.version')} (${System.getProperty('ja
 println("Arch: ${System.getProperty('os.arch')}")
 //println(repeat('*', 60))
 
-tasks.named('wrapper', Wrapper).configure {
-    //Define wrapper values here so as to not have to always do so when updating gradlew.properties
-    gradleVersion = '8.4'
-    distributionType = Wrapper.DistributionType.BIN
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(17)
+        vendor = JvmVendorSpec.JETBRAINS
+    }
 }
-
 
 subprojects {
     apply plugin: 'java'

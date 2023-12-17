@@ -1,11 +1,11 @@
 package edivad.morejeiinfo.platform;
 
 import edivad.morejeiinfo.platform.services.IPlatformItemStackHelper;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.RecipeType;
 import net.neoforged.neoforge.common.CommonHooks;
-import net.neoforged.neoforge.registries.ForgeRegistries;
 
 public class ItemStackHelper implements IPlatformItemStackHelper {
 
@@ -26,6 +26,6 @@ public class ItemStackHelper implements IPlatformItemStackHelper {
 
   @Override
   public String getRegistryName(ItemStack itemStack) {
-    return ForgeRegistries.ITEMS.getKey(itemStack.getItem()).toString();
+    return BuiltInRegistries.ITEM.getKey(itemStack.getItem()).toString();
   }
 }

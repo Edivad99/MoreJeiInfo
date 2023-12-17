@@ -14,13 +14,13 @@ description = "Adds more information in tooltips"
 
 [[dependencies.morejeiinfo]]
 modId = "neoforge"
-mandatory = true
+type = "required"
 versionRange = "${neo_version_range}"
 ordering = "NONE"
 side = "BOTH"
 [[dependencies.morejeiinfo]]
 modId = "minecraft"
-mandatory = true
+type = "required"
 versionRange = "${minecraft_version_range}"
 ordering = "NONE"
 side = "BOTH"
