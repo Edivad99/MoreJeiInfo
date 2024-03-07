@@ -37,21 +37,6 @@ dependencies {
     runtimeOnly "mezz.jei:jei-$minecraft_version-neoforge:$jei_version"
 }
 
-tasks.withType(ProcessResources).configureEach {
-    var replaceProperties = [
-            mod_version:                mod_version,
-            mod_name:                   mod_name,
-            neo_loader_version_range:   neo_loader_version_range,
-            neo_version_range:          neo_version_range,
-            minecraft_version_range:    minecraft_version_range,
-    ]
-    inputs.properties replaceProperties
-
-    filesMatching(['META-INF/mods.toml', 'pack.mcmeta']) {
-        expand replaceProperties + [project: project]
-    }
-}
-
 // NeoGradle compiles the game, but we don't want to add our common code to the game's code
 Spec<Task> notNeoTask = { Task it -> !it.name.startsWith("neo") } as Spec<Task>
 
