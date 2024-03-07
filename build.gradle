@@ -15,8 +15,6 @@ subprojects {
             languageVersion = JavaLanguageVersion.of(17)
             vendor = JvmVendorSpec.JETBRAINS
         }
-        withSourcesJar()
-        withJavadocJar()
     }
     jar {
         from(rootProject.file("LICENSE")) {
