@@ -10,7 +10,6 @@ import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.config.ModConfig;
 import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.data.event.GatherDataEvent;
-import net.neoforged.neoforge.network.NetworkConstants;
 
 @Mod(Shared.ID)
 public class MoreJEIInfo {
@@ -28,8 +27,7 @@ public class MoreJEIInfo {
     // Make sure the mod being absent on the other network side does not cause the client
     // to display the server as incompatible
     modLoadingContext.registerExtensionPoint(IExtensionPoint.DisplayTest.class,
-        () -> new IExtensionPoint.DisplayTest(() -> NetworkConstants.IGNORESERVERONLY,
-            (a, b) -> true));
+        () -> new IExtensionPoint.DisplayTest(() -> "ANY", (a, b) -> true));
   }
 
   private void handleGatherData(GatherDataEvent event) {
