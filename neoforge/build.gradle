@@ -33,6 +33,8 @@ sourceSets.main.resources.srcDir 'src/generated/resources'
 dependencies {
     implementation "net.neoforged:neoforge:$neo_version"
     compileOnly project(':common')
+
+    runtimeOnly "mezz.jei:jei-$minecraft_version-neoforge:$jei_version"
 }
 
 tasks.withType(ProcessResources).configureEach {

@@ -13,7 +13,8 @@ public class Translations {
   public static final String NBT_DATA = makeKey("tooltip", "nbtData");
   public static final String REGISTRY_NAME = makeKey("tooltip", "registryName");
   public static final String STACK_SIZE = makeKey("tooltip", "stackSize");
-  public static final String TAGS = makeKey("tooltip", "tags");
+  public static final String ITEM_TAGS = makeKey("tooltip", "item_tags");
+  public static final String BLOCK_TAGS = makeKey("tooltip", "block_tags");
   public static final String TRANSLATION_KEY = makeKey("tooltip", "translationKey");
 
   public static final String BURN_TIME_MODE = makeKey("config", "burnTimeMode");
@@ -35,7 +36,8 @@ public class Translations {
     TRANSLATIONS.add(new Pair<>(Translations.STACK_SIZE, "Max stack size: %s"));
     TRANSLATIONS.add(new Pair<>(Translations.NBT_DATA, "NBT: %s"));
     TRANSLATIONS.add(new Pair<>(Translations.REGISTRY_NAME, "Registry name: %s"));
-    TRANSLATIONS.add(new Pair<>(Translations.TAGS, "Tags:"));
+    TRANSLATIONS.add(new Pair<>(Translations.ITEM_TAGS, "Item tags:"));
+    TRANSLATIONS.add(new Pair<>(Translations.BLOCK_TAGS, "Block tags:"));
     TRANSLATIONS.add(new Pair<>(Translations.TRANSLATION_KEY, "Translation key: %s"));
     TRANSLATIONS.add(new Pair<>(Translations.BURN_TIME_MODE, "Burn Time Tooltip"));
     TRANSLATIONS.add(new Pair<>(Translations.DURABILITY_MODE, "Durability Tooltip"));

@@ -8,13 +8,14 @@
   "config.morejeiinfo.stackSizeMode": "Max stack size Tooltip",
   "config.morejeiinfo.tagsMode": "Tags Tooltip",
   "config.morejeiinfo.translationKeyMode": "Translation key Tooltip",
+  "tooltip.morejeiinfo.block_tags": "Block tags:",
   "tooltip.morejeiinfo.burnTime": "Burn Time: %s ticks",
   "tooltip.morejeiinfo.durability": "Durability: %s/%s",
   "tooltip.morejeiinfo.enchantability": "Enchantability: %s",
   "tooltip.morejeiinfo.hunger": "Hunger: %s Saturation: %s",
+  "tooltip.morejeiinfo.item_tags": "Item tags:",
   "tooltip.morejeiinfo.nbtData": "NBT: %s",
   "tooltip.morejeiinfo.registryName": "Registry name: %s",
   "tooltip.morejeiinfo.stackSize": "Max stack size: %s",
-  "tooltip.morejeiinfo.tags": "Tags:",
   "tooltip.morejeiinfo.translationKey": "Translation key: %s"
 }
