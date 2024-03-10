@@ -27,7 +27,7 @@ public class MoreJEIInfo {
     // Make sure the mod being absent on the other network side does not cause the client
     // to display the server as incompatible
     modLoadingContext.registerExtensionPoint(IExtensionPoint.DisplayTest.class,
-        () -> new IExtensionPoint.DisplayTest(() -> "ANY", (a, b) -> true));
+        () -> new IExtensionPoint.DisplayTest(() -> IExtensionPoint.DisplayTest.IGNORESERVERONLY, (a, b) -> true));
   }
 
   private void handleGatherData(GatherDataEvent event) {
