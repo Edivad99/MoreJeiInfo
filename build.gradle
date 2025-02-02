@@ -5,7 +5,7 @@ plugins {
     id 'net.neoforged.moddev' version '2.0.77' apply false
 }
 
-println("Project Version: $version")
+println("Project Version: $mod_version")
 println("Java: ${System.getProperty('java.version')}")
 println("JVM: ${System.getProperty('java.vm.version')} (${System.getProperty('java.vendor')})")
 println("Arch: ${System.getProperty('os.arch')}")
