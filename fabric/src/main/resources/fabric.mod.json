@@ -3,15 +3,15 @@
   "id": "${mod_id}",
   "version": "${mod_version}",
   "name": "${mod_name}",
-  "description": "Adds more information in tooltips",
+  "description": "${mod_description}",
   "authors": [
-    "Edivad99"
+    "${mod_author}"
   ],
   "contact": {
     "sources": "https://github.com/Edivad99/MoreJeiInfo",
     "issues": "https://github.com/Edivad99/MoreJeiInfo/issues"
   },
-  "license": "MIT",
+  "license": "${mod_license}",
   "environment": "client",
   "entrypoints": {
     "fabric-datagen": [
@@ -25,6 +25,6 @@
     "fabricloader": ">=${fabric_loader_version}",
     "fabric-api": "*",
     "minecraft": "${minecraft_version}",
-    "java": ">=17"
+    "java": ">=21"
   }
 }

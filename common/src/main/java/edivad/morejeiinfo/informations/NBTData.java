@@ -3,9 +3,8 @@ package edivad.morejeiinfo.informations;
 import java.util.List;
 import java.util.function.Supplier;
 import edivad.morejeiinfo.Translations;
-import edivad.morejeiinfo.platform.Services;
 import edivad.morejeiinfo.tooltip.Mode;
-import net.minecraft.nbt.CompoundTag;
+import net.minecraft.core.component.DataComponents;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.ItemStack;
 
@@ -19,9 +18,10 @@ public class NBTData implements Information {
 
   @Override
   public List<Component> addInformation(ItemStack itemStack) {
-    CompoundTag nbtData = Services.PLATFORM.getItemStackHelper().getNBTData(itemStack);
-    if (nbtData != null) {
-      return List.of(Component.translatable(Translations.NBT_DATA, nbtData));
+    var customData = itemStack.get(DataComponents.CUSTOM_DATA);
+    if (customData != null) {
+      var tag = customData.copyTag();
+      return List.of(Component.translatable(Translations.NBT_DATA, tag));
     }
     return List.of();
   }

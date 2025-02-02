@@ -15,6 +15,7 @@ import edivad.morejeiinfo.informations.Tags;
 import edivad.morejeiinfo.informations.TranslationKey;
 import edivad.morejeiinfo.tooltip.TooltipUtils;
 import net.minecraft.network.chat.Component;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 
@@ -34,8 +35,8 @@ public class TooltipEventHandler {
     INFORMATION.add(new TranslationKey(() -> Config.translationKeyTooltipMode));
   }
 
-  public static void onItemTooltip(ItemStack itemStack, TooltipFlag flag,
-      List<Component> tooltTipList) {
+  public static void onItemTooltip(ItemStack itemStack, Item.TooltipContext context,
+      TooltipFlag flag, List<Component> tooltTipList) {
     TooltipUtils.addTooltips(tooltTipList, INFORMATION, itemStack);
   }
 }

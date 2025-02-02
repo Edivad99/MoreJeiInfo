@@ -1,6 +1,6 @@
 modLoader = "javafml"
-loaderVersion = "${neo_loader_version_range}"
-license = "MIT"
+loaderVersion = "${neoforge_loader_version_range}"
+license = "${mod_license}"
 issueTrackerURL = "https://github.com/Edivad99/MoreJeiInfo/issues"
 
 [[mods]]
@@ -9,14 +9,14 @@ issueTrackerURL = "https://github.com/Edivad99/MoreJeiInfo/issues"
   displayName = "${mod_name}"
   displayURL = "https://github.com/Edivad99/MoreJeiInfo"
   updateJSONURL = "https://api.modrinth.com/updates/morejeiinfo/forge_updates.json?neoforge=include"
-  authors = "Edivad99"
+  authors = "${mod_author}"
   displayTest = "NONE"
-  description = "Adds more information in tooltips"
+  description = "${mod_description}"
 
 [[dependencies.morejeiinfo]]
   modId = "neoforge"
   type = "required"
-  versionRange = "${neo_version_range}"
+  versionRange = "${neoforge_version_range}"
   ordering = "NONE"
   side = "BOTH"
 [[dependencies.morejeiinfo]]
